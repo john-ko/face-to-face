@@ -12,21 +12,36 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Utility class
+ *
+ * handles data use to render the line and pie charts
+ * public static helper functions
+ */
 public class Utility {
 
-    private static ArrayList<String> getPieChartLabels() {
-        ArrayList<String> labels = new ArrayList<>();
-        labels.add("patient");
-        labels.add("other");
-        return labels;
-    }
-
+    /**
+     * formatDataList
+     *
+     * formats a ArrayList< Data > to a hashmap of averages
+     * helper function for setLineChartData(...)
+     * @param dataList
+     * @return HashMap
+     */
     public static HashMap<String, Float> formatDataList(ArrayList<Data> dataList) {
+
+        // hashmap
         HashMap<String, Float> averages = new HashMap<>();
+
+        // map of lists map = {"key": [1.2f, 2.3f, ...]}
         HashMap<String, ArrayList<Float>> map = new HashMap<>();
 
-
+        // puts data into categories based on which day the data was saved
         for (Data data: dataList) {
+
+            // calendar converts the day into the number of day of the year
+            // example Nov 15 = 320th day of the year, 0 index based (319)
+            // ans use 320 as key in hashmap
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(data.getStart());
             String key = new SimpleDateFormat("D").format(cal.getTime());
@@ -35,11 +50,11 @@ public class Utility {
                 map.put(key, new ArrayList<Float>());
             }
 
+            // patient percentages
             map.get(key).add((float) data.getPatient() / data.getTotal());
-
-
         }
 
+        // this loop gets the averages
         for (Map.Entry<String, ArrayList<Float>> entry : map.entrySet()) {
             float sum = 0;
             for (float time : entry.getValue()) {
@@ -50,15 +65,29 @@ public class Utility {
         }
 
         return averages;
-
     }
 
+    /**
+     * setPieChartData
+     *
+     * just sets the pie chart data given Chart and Data
+     * @param Chart
+     * @param d
+     */
     public static void setPieChartData(Chart Chart, Data d) {
+
+        // null case
+        if (d.getStart() == 0 && d.getEnd() == 0) {
+            return;
+        }
+
+        // set up variables
         ArrayList<Entry> entries = new ArrayList<>();
         DataSet dataset;
         ChartData data;
 
-        entries.add(new Entry((float) d.getTotal()/1000, 0));
+        // divide entries by 1000 since data is in milliseconds
+        entries.add(new Entry((float) d.getTimeWithoutPatient()/1000, 0));
         entries.add(new Entry((float) d.getPatient()/1000, 1));
 
         dataset = new PieDataSet(entries, "Patient Data");
@@ -71,20 +100,37 @@ public class Utility {
 
     }
 
+    /**
+     * setLineChartData
+     *
+     * sets linechart data given Chart and a map of averages
+     * @param Chart
+     * @param averages
+     */
     public static void setLineChartData(Chart Chart, HashMap<String, Float> averages) {
+
+        // null case
+        if (averages.size() == 0) {
+            return;
+        }
+
+        // set up variables
         ArrayList<Entry> entries = new ArrayList<>();
         DataSet dataset;
         ChartData data;
 
         int index = 0;
-
         for (Map.Entry<String, Float> entry : averages.entrySet()) {
+            // entries require (float, index position)
             entries.add(new Entry(entry.getValue(), index));
             index++;
         }
 
+        // label for line chart
         dataset = new LineDataSet(entries, "Happiness Level");
-        data= new LineData(new ArrayList<String>(averages.keySet()), (ILineDataSet) dataset);
+
+        // LineData requires ( Array of Strings as labels, dataset)
+        data = new LineData(new ArrayList<String>(averages.keySet()), (ILineDataSet) dataset);
 
         Chart.animateY(3000);
         Chart.setData(data);

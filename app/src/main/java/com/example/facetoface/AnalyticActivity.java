@@ -20,11 +20,8 @@ public class AnalyticActivity extends AppCompatActivity {
 
         PieChart pieChart1 = (PieChart) findViewById(R.id.pieChart_1);
         Utility.setPieChartData(pieChart1, dbHandler.getLatestEntry());
-//        Utility.setChartData(pieChart1,2);
 
         LineChart lineChart2 = (LineChart) findViewById(R.id.lineChart_3);
         Utility.setLineChartData(lineChart2, Utility.formatDataList(dbHandler.getAll()));
-//        Utility.setPieChartData(lineChart2, );
-//        Utility.setChartData(lineChart2,1);
     }
 }

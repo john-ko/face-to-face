@@ -3,11 +3,11 @@ package com.example.facetoface.data;
 import java.util.ArrayList;
 
 /**
- * Created by john on 11/14/16.
+ * Data
  */
-
 public class Data {
 
+    // lock for multithreaded tasks
     private final Object mLock = new Object();
 
     private long start;
@@ -15,6 +15,7 @@ public class Data {
     private long last;
     private long patient;
 
+    // maybe this should be with Utility class
     public static ArrayList<String> getLabels() {
         ArrayList<String> labels = new ArrayList<>();
         labels.add("time without");
@@ -29,19 +30,42 @@ public class Data {
         this.patient = 0;
     }
 
+    /**
+     * start
+     * starts the stopwatch
+     */
     public void start() {
         this.start = System.currentTimeMillis();
-        this.last = this.start;
+        this.last = 0;
     }
 
+    /**
+     * end - stops the stopwatch
+     */
     public void end() {
         this.end = System.currentTimeMillis();
     }
 
+    /**
+     * getTotal - returns the total elapsed time in milliseconds
+     * @return Long
+     */
     public long getTotal() {
         return this.end - this.start;
     }
 
+    /**
+     * getTimeWithoutPatient - the total time of when the patient is out of frame
+     * @return Long
+     */
+    public long getTimeWithoutPatient() {
+        return this.getTotal() - this.patient;
+    }
+
+    /**
+     * faceIsIn - when a face is in frame it will keep counting the ticks as long as
+     * the face is still in frame
+     */
     public void faceIsIn() {
         synchronized (mLock) {
             long timestamp = System.currentTimeMillis();
@@ -52,6 +76,10 @@ public class Data {
         }
     }
 
+    /**
+     * faceIsOut - when a face is not in frame, it will add the last remaining tick to the
+     * patient and set last to zero
+     */
     public void faceIsOut() {
         synchronized (mLock) {
             long timestamp = System.currentTimeMillis();
@@ -63,15 +91,16 @@ public class Data {
         }
     }
 
+    /**
+     * zero - zero's out last
+     */
     public void zero() {
         synchronized (mLock) {
             this.last = 0;
         }
     }
 
-    public void save() {
-
-    }
+    // --- Getters and setters below ---
 
     public long getStart() {
         return start;
@@ -104,4 +133,5 @@ public class Data {
     public void setPatient(long patient) {
         this.patient = patient;
     }
+
 }

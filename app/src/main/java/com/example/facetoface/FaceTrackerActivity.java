@@ -47,6 +47,11 @@ import java.io.IOException;
 /**
  * Activity for the face tracker app.  This app detects faces with the rear facing camera, and draws
  * overlay graphics to indicate the position, size, and ID of each face.
+ *
+ *
+ * FaceToFace
+ * each time a face goes in or out of view, the private class GraphicFaceTracker will keep track
+ * of the Data and on back button will save it to local storage.
  */
 public final class FaceTrackerActivity extends AppCompatActivity {
     private static final String TAG = "FaceTracker";
@@ -55,7 +60,10 @@ public final class FaceTrackerActivity extends AppCompatActivity {
 
     private CameraSourcePreview mPreview;
     private GraphicOverlay mGraphicOverlay;
+
+    // Data
     private Data mData;
+    // Database Handler
     private DataDBHandler mDBH;
 
     private static final int RC_HANDLE_GMS = 9001;
@@ -307,7 +315,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
          */
         @Override
         public void onNewItem(int faceId, Face item) {
-            System.out.println("ABC: onNewItem");
             mData.zero();
             mFaceGraphic.setId(faceId);
         }
@@ -317,7 +324,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
          */
         @Override
         public void onUpdate(FaceDetector.Detections<Face> detectionResults, Face face) {
-            System.out.println("ABC: ran onUpdate");
             mData.faceIsIn();
             System.out.println(mData.getPatient());
             mOverlay.add(mFaceGraphic);
@@ -331,7 +337,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
          */
         @Override
         public void onMissing(FaceDetector.Detections<Face> detectionResults) {
-            System.out.println("ABC: ended");
             mData.faceIsOut();
             System.out.println(mData.getPatient());
             mOverlay.remove(mFaceGraphic);
@@ -343,7 +348,6 @@ public final class FaceTrackerActivity extends AppCompatActivity {
          */
         @Override
         public void onDone() {
-            System.out.println("ABC: DONE");
             System.out.println(mData.getPatient());
             mOverlay.remove(mFaceGraphic);
         }

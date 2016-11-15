@@ -38,8 +38,6 @@ public class ExampleInstrumentedTest {
         DataDBHandler dbHandler = new DataDBHandler(appContext, null, null, 1);
         Data d = dbHandler.getLatestEntry();
 
-        dbHandler.dropTables();
-
         Log.d(" -- DEBUG -- ", " - - - - - - - - - - - - - - - ");
 
         assertEquals("com.example.facetoface", appContext.getPackageName());
