@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,27 +9,57 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.facetoface.MainActivity">
+    tools:context="com.example.facetoface.MainActivity"
+    android:background="#ffffff">
+
+    <com.example.facetoface.MyCustomerTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:text="FaceToFace"
+        android:autoText="false"
+        android:textSize="55sp"
+        android:layout_marginTop="31dp"
+        android:gravity="center_horizontal"
+        android:textColor="#1086D5"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_logo_blue"
+        android:id="@+id/imageView2"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Analytics"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
         android:id="@+id/button2"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_alignParentEnd="true"
-        android:onClick="loadAnalytics" />
+        android:background="@drawable/round_buttom"
+        android:onClick="loadAnalytics"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="41dp"
+        android:fontFamily="monospace"
+        android:textColor="#CEE2EF"
+        android:textSize="30sp" />
 
     <Button
         android:text="Camera"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
         android:id="@+id/button3"
-        android:layout_marginBottom="27dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="loadCamera" />
+        android:background="@drawable/round_buttom"
+        android:onClick="loadCamera"
+        android:textSize="30sp"
+        android:fontFamily="monospace"
+        android:textColor="#CEE2EF"
+        android:layout_marginBottom="18dp"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
