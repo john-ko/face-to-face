@@ -2,10 +2,12 @@ package com.example.facetoface.data;
 
 import java.util.ArrayList;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+
 /**
  * Data
  */
-public class Data {
+public class Data implements Comparable<Data>{
 
     // lock for multithreaded tasks
     private final Object mLock = new Object();
@@ -52,6 +54,14 @@ public class Data {
      */
     public long getTotal() {
         return this.end - this.start;
+    }
+
+    /**
+     * getMeanPercentage - returns the percentage of percent in milliseconds
+     * @return float
+     */
+    public float getPercentage(){
+        return (float)this.getPatient()/this.getTotal();
     }
 
     /**
@@ -132,6 +142,13 @@ public class Data {
 
     public void setPatient(long patient) {
         this.patient = patient;
+    }
+
+    @Override
+    public int compareTo(Data percentage) {
+        int comparePercentage=(int)((Data)percentage).getPercentage();
+            /* For Ascending order*/
+        return (int)this.getPercentage()-comparePercentage;
     }
 
 }
