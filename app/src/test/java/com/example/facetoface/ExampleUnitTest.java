@@ -34,4 +34,9 @@ public class ExampleUnitTest {
         System.out.println(cal.get(Calendar.MONTH));
         System.out.println(new SimpleDateFormat("D").format(cal.getTime()));
     }
+
+    @Test
+    public void testInt() {
+
+    }
 }

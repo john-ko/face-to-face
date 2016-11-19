@@ -5,9 +5,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.facetoface.R;
 
-public class SecondFragment extends Fragment{
+import com.example.facetoface.R;
+import com.example.facetoface.Statistics;
+
+public class SecondFragment extends Fragment implements StatsHandler {
+    Statistics stats;
 
     public SecondFragment() {
         // Required empty public constructor
@@ -25,4 +28,9 @@ public class SecondFragment extends Fragment{
         return inflater.inflate(R.layout.fragment_second, container, false);
     }
 
+
+    @Override
+    public void setStats(Statistics s) {
+        this.stats = s;
+    }
 }
