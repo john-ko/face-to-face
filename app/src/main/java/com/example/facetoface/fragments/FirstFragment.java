@@ -6,14 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.facetoface.R;
+import com.example.facetoface.Statistics;
 import com.example.facetoface.Utility;
 import com.example.facetoface.data.DataDBHandler;
 import com.github.mikephil.charting.charts.CandleStickChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 
-public class FirstFragment extends Fragment{
+public class FirstFragment extends Fragment implements StatsHandler {
 
+    Statistics stats;
     public FirstFragment() {
         // Required empty public constructor
     }
@@ -21,15 +23,6 @@ public class FirstFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//
-//        DataDBHandler dbHandler = new DataDBHandler(getContext(), null, null, 1);
-//
-//        PieChart pieChart1 = (PieChart) findViewById(R.id.pieChart_1);
-//        Utility.setPieChartData(pieChart1, dbHandler.getLatestEntry());
-//
-//        LineChart lineChart2 = (LineChart) findViewById(R.id.lineChart_3);
-//        Utility.setLineChartData(lineChart2, Utility.formatDataList(dbHandler.getAll()));
     }
 
     @Override
@@ -52,6 +45,10 @@ public class FirstFragment extends Fragment{
         return testView;
     }
 
+    @Override
+    public void setStats(Statistics s) {
+        this.stats = s;
+    }
 }
 
 //import android.os.Bundle;

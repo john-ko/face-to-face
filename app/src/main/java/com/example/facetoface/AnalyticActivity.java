@@ -1,28 +1,22 @@
 package com.example.facetoface;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.webkit.WebView;
 
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.facetoface.R;
+import com.example.facetoface.data.Data;
 import com.example.facetoface.fragments.FirstFragment;
 import com.example.facetoface.fragments.SecondFragment;
 import com.example.facetoface.data.DataDBHandler;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.charts.PieChart;
 
 public class AnalyticActivity extends AppCompatActivity {
 
@@ -34,12 +28,15 @@ public class AnalyticActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    Statistics stats;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analytic);
 
-//        DataDBHandler dbHandler = new DataDBHandler(this, null, null, 1);
+        DataDBHandler dbHandler = new DataDBHandler(this, null, null, 1);
+        stats = new Statistics(dbHandler.getAll());
 //
 //        PieChart pieChart1 = (PieChart) findViewById(R.id.pieChart_1);
 //        Utility.setPieChartData(pieChart1, dbHandler.getLatestEntry());
@@ -68,8 +65,15 @@ public class AnalyticActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FirstFragment(), "Graphs");
-        adapter.addFragment(new SecondFragment(), "Statistics");
+
+        FirstFragment f = new FirstFragment();
+        f.setStats(stats);
+        adapter.addFragment(f, "Graphs");
+
+        SecondFragment s = new SecondFragment();
+        s.setStats(stats);
+        adapter.addFragment(s, "Statistics");
+
         viewPager.setAdapter(adapter);
     }
 
