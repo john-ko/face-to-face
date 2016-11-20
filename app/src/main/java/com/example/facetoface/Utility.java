@@ -48,7 +48,7 @@ public class Utility {
             // ans use 320 as key in hashmap
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(data.getStart());
-            String key = new SimpleDateFormat("D").format(cal.getTime());
+            String key = new SimpleDateFormat("M/d").format(cal.getTime());
 
             if (!map.containsKey(key)) {
                 map.put(key, new ArrayList<Float>());

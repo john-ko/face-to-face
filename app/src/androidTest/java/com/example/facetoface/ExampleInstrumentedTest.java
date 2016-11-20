@@ -11,7 +11,9 @@ import com.example.facetoface.data.DataDBHandler;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,11 +85,11 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testBoxPlotData() {
-        Context appContext = InstrumentationRegistry.getTargetContext();
-        DataDBHandler dbHandler = new DataDBHandler(appContext, null, null, 1);
-        ArrayList<Data> dataList = dbHandler.getAll();
-        Utility.moveThisToStats(dataList);
-        Log.d(" -- low -- ", Float.toString(34.2f));
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        String key = new SimpleDateFormat("M/d").format(cal.getTime());
+        Log.d(" -- DEBUG -- ", key);
     }
 
     //creat data randomize it
