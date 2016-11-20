@@ -1,9 +1,12 @@
 package com.example.facetoface;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.Log;
 
 import com.example.facetoface.data.Data;
 import com.example.facetoface.data.DataDBHandler;
 import com.github.mikephil.charting.charts.*;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.*;
 import com.github.mikephil.charting.interfaces.datasets.*;
 import com.github.mikephil.charting.utils.ColorTemplate;
@@ -32,15 +35,27 @@ public class Utility {
      * @param dataList
      * @return HashMap
      */
-    public static HashMap<String, Float> formatDataList(ArrayList<Data> dataList) {
+    public static TreeMap<String, Float> formatDataList(ArrayList<Data> dataList) {
 
         // hashmap
-        HashMap<String, Float> averages = new HashMap<>();
+        TreeMap<String, Float> averages = new TreeMap<>();
+        TreeMap<String, ArrayList<Data>> map = Utility.getMapOfData(dataList);
 
-        // map of lists map = {"key": [1.2f, 2.3f, ...]}
-        HashMap<String, ArrayList<Float>> map = new HashMap<>();
+        // this loop gets the averages
+        for (Map.Entry<String, ArrayList<Data>> entry : map.entrySet()) {
+            float sum = 0;
+            for (Data d : entry.getValue()) {
+                sum += d.getPercentage();
+            }
 
-        // puts data into categories based on which day the data was saved
+            averages.put(entry.getKey(), sum / entry.getValue().size());
+        }
+
+        return averages;
+    }
+
+    public static TreeMap<String, ArrayList<Data>> getMapOfData(ArrayList<Data> dataList) {
+        TreeMap<String, ArrayList<Data>> map = new TreeMap<>();
         for (Data data: dataList) {
 
             // calendar converts the day into the number of day of the year
@@ -51,25 +66,16 @@ public class Utility {
             String key = new SimpleDateFormat("M/d").format(cal.getTime());
 
             if (!map.containsKey(key)) {
-                map.put(key, new ArrayList<Float>());
+                map.put(key, new ArrayList<Data>());
             }
 
             // patient percentages
-            map.get(key).add((float) data.getPatient() / data.getTotal());
+            map.get(key).add(data);
         }
 
-        // this loop gets the averages
-        for (Map.Entry<String, ArrayList<Float>> entry : map.entrySet()) {
-            float sum = 0;
-            for (float time : entry.getValue()) {
-                sum += time;
-            }
-
-            averages.put(entry.getKey(), sum / entry.getValue().size());
-        }
-
-        return averages;
+        return map;
     }
+
 
     /**
      * setPieChartData
@@ -109,9 +115,10 @@ public class Utility {
      *
      * sets linechart data given Chart and a map of averages
      * @param Chart
-     * @param averages
      */
-    public static void setLineChartData(Chart Chart, HashMap<String, Float> averages) {
+    public static void setLineChartData(Chart Chart, ArrayList<Data> dataList) {
+
+        TreeMap<String, Float> averages = Utility.formatDataList(dataList);
 
         // null case
         if (averages.size() == 0) {
@@ -119,13 +126,12 @@ public class Utility {
         }
 
         // set up variables
-        TreeMap<String, Float> map = new TreeMap<>(averages);
         ArrayList<Entry> entries = new ArrayList<>();
         DataSet dataset;
         ChartData data;
 
         int index = 0;
-        for (Map.Entry<String, Float> entry : map.entrySet()) {
+        for (Map.Entry<String, Float> entry : averages.entrySet()) {
             // entries require (float, index position)
             entries.add(new Entry(entry.getValue(), index));
             index++;
@@ -135,33 +141,42 @@ public class Utility {
         dataset = new LineDataSet(entries, "Happiness Level");
 
         // LineData requires ( Array of Strings as labels, dataset)
-        data = new LineData(new ArrayList<String>(map.keySet()), (ILineDataSet) dataset);
+        data = new LineData(new ArrayList<String>(averages.keySet()), (ILineDataSet) dataset);
 
         Chart.animateY(3000);
         Chart.setData(data);
     }
 
     public static void setCandleChartData(Chart chart, ArrayList<Data> dataList) {
+
         ArrayList<CandleEntry> yVals = new ArrayList<CandleEntry>();
+        TreeMap<String, ArrayList<Data>> treeMap = Utility.getMapOfData(dataList);
+        ArrayList<String> xVals = new ArrayList<String>(treeMap.keySet());
 
-        yVals.add(Utility.setCandleEntryData(0, dataList));
-        // group by day
+        int i = 0;
+        for (Map.Entry<String, ArrayList<Data>> entry : treeMap.entrySet()) {
+            yVals.add(Utility.setCandleEntryData(i, entry.getValue()));
+            i++;
+        }
 
-        // group by week
+        CandleDataSet set1 = new CandleDataSet(yVals, "Data Set");
 
-        // all alldata
+        CandleData data = new CandleData(xVals, set1);
 
-        ArrayList<String> xVals = new ArrayList<>();
-        xVals.add("HELLO");
-
-        CandleDataSet set = new CandleDataSet(yVals, "Data Set");
-
-        CandleData data = new CandleData(xVals, set);
-
+        set1.setAxisDependency(YAxis.AxisDependency.LEFT);
+//        set1.setColor(Color.rgb(80, 80, 80));
+        set1.setShadowColor(Color.DKGRAY);
+        set1.setShadowWidth(0.7f);
+        set1.setDecreasingColor(Color.RED);
+        set1.setDecreasingPaintStyle(Paint.Style.FILL);
+        set1.setIncreasingColor(Color.rgb(122, 242, 84));
+        set1.setIncreasingPaintStyle(Paint.Style.STROKE);
+        set1.setNeutralColor(Color.BLUE);
         chart.setData(data);
     }
 
     public static CandleEntry setCandleEntryData(int index, ArrayList<Data> data) {
+
         Collections.sort(data);
         float low = data.get(0).getPercentage();
         float high = data.get(0).getPercentage();
@@ -171,7 +186,7 @@ public class Utility {
         int i = 0;
         for (Data d: data) {
             float percentage = d.getPercentage();
-            if (percentage < low) {
+            if (percentage < low && percentage != 0) {
                 low = percentage;
             }
 
@@ -190,7 +205,7 @@ public class Utility {
             i++;
         }
 
-        return new CandleEntry(0, high, low, firstQuartile, thirdQuartile);
+        return new CandleEntry(index, high, low, firstQuartile, thirdQuartile);
     }
 
 }

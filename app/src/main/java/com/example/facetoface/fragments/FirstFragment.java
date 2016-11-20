@@ -50,7 +50,7 @@ public class FirstFragment extends Fragment implements StatsHandler {
 
 
         LineChart lineChart2 = (LineChart) testView.findViewById(R.id.lineChart_3);
-        Utility.setLineChartData(lineChart2, Utility.formatDataList(stats.getAll()));
+        Utility.setLineChartData(lineChart2, stats.getAll());
 
         CandleStickChart candleStickChart = (CandleStickChart) testView.findViewById(R.id.candleCart);
         Utility.setCandleChartData(candleStickChart, stats.getAll());
