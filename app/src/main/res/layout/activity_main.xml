@@ -25,15 +25,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_logo_blue"
-        android:id="@+id/imageView2"
-        android:layout_marginTop="14dp"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:text="Analytics"
         android:layout_width="match_parent"
@@ -48,6 +39,15 @@
         android:textColor="#CEE2EF"
         android:textSize="30sp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_logo_blue"
+        android:id="@+id/imageView2"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:text="Camera"
         android:layout_height="wrap_content"
@@ -57,9 +57,9 @@
         android:textSize="30sp"
         android:fontFamily="monospace"
         android:textColor="#CEE2EF"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="17dp"
         android:layout_width="match_parent"
         android:layout_above="@+id/button2"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

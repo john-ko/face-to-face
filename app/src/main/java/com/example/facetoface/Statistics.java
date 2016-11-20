@@ -25,46 +25,153 @@ public class Statistics {
         return this.data;
     }
 
+    /**
+     * getfake - return the arraylist of fake data
+     * @return ArrayList<Data>
+     */
+// function to return a fake data set
+    public ArrayList<Data> getFakeData(){
+        Data d1 = new Data(); // 0.5
+
+        ArrayList<Data> fakeData = new ArrayList<>();
+
+        //0.1
+        d1.setEnd(50000);
+        d1.setPatient(5000);
+        fakeData.add(d1);
+        //0.2
+        d1.setEnd(50000);
+        d1.setPatient(10000);
+        fakeData.add(d1);
+
+        d1.setEnd(50000);
+        d1.setPatient(15000);
+        fakeData.add(d1);
+
+        d1.setEnd(50000);
+        d1.setPatient(20000);
+        fakeData.add(d1);
+
+        d1.setEnd(50000);
+        d1.setPatient(25000);
+        fakeData.add(d1);
+
+        d1.setEnd(50000);
+        d1.setPatient(30000);
+        fakeData.add(d1);
+
+        d1.setEnd(50000);
+        d1.setPatient(35000);
+        fakeData.add(d1);
+
+        d1.setEnd(50000);
+        d1.setPatient(40000);
+        fakeData.add(d1);
+
+        d1.setEnd(50000);
+        d1.setPatient(45000);
+        fakeData.add(d1);
+
+        d1.setEnd(5000);
+        d1.setPatient(48000);
+        fakeData.add(d1);
+
+        return fakeData;
+    }
 
     public Statistics(ArrayList<Data> data) {
-//        fullData = data;
-        //copy data to fullData amd keep fullData untouched
-        fullData = (ArrayList<Data>)data.clone();
-        data = (ArrayList<Data>) fullData.clone();
-
+        this.fullData = (ArrayList<Data>)data.clone();
+        this.data = (ArrayList<Data>) fullData.clone();
     }
 
     /**
      * mean - return the mean if the percentage in the data list
      * @return float
      */
-    public float mean() {
+    public float mean(ArrayList<Data> temp) {
         // todo change return type and return mean
-        int percentage = 0;
+        float percentage = 0;
 
-        for(int i=0; i<this.data.size(); i++)
-        {
-            percentage += this.data.get(i).getPercentage();
+        for (int i = 0; i < temp.size(); i++) {
+            percentage += temp.get(i).getPercentage();
         }
 
-        return (float)percentage/this.data.size();
+        return (float) percentage / temp.size();
     }
 
     /**
      * median - return the median number of the percentage of the data list
      * @return float
      */
-    public float median() {
+    public float median(ArrayList<Data> temp) {
         // todo change return type and return median
         Collections.sort(data);
-        int middle = this.data.size()/2;
-        if(this.data.size()%2 == 1){
-            return this.data.get(middle).getPercentage();
+        int middle = temp.size()/2;
+        if(temp.size()%2 == 1){
+            return temp.get(middle).getPercentage();
         }
         else
         {
-            return (float)((this.data.get(middle-1).getPercentage() + this.data.get(middle).getPercentage())/2.0);
+            return (float)((temp.get(middle-1).getPercentage() + temp.get(middle).getPercentage())/2.0);
         }
+    }
+
+    /**
+     * variance - return the variance of the percentage of the data list
+     * @return float
+     */
+    public float variance(ArrayList<Data> temp)
+    {
+        float mean = mean(temp);
+        double t = 0;
+        for(int i=0; i<temp.size(); i++)
+        {
+            float data = temp.get(i).getPercentage();
+            t += (data-mean)*(data-mean);
+        }
+        return (float)t/temp.size();
+    }
+
+    /**
+     * stdDev - return the standard deviation of the pecentage of the data list
+     * @return float
+     */
+    public float stdDev(ArrayList<Data> temp)
+    {
+        return (float)Math.sqrt(variance(temp));
+    }
+
+
+    /**
+     * ttest - return the t-test by comparing two group of data list
+     * @return
+     */
+    public float ttest(ArrayList<Data> temp)
+    {
+        ArrayList<Data> realData = new ArrayList<>();
+        ArrayList<Data> fakeData = new ArrayList<>();
+
+        //get the last ten data from realdata;
+        for(int i=temp.size()-1; i>temp.size()-11; i--)
+        {
+            realData.add(temp.get(i));
+        }
+
+        fakeData = getFakeData();
+        //get all the data for for t-test: variance, mean, stdDev, sampleSize=10
+        float m1 = mean(realData);
+        float m2 = mean(fakeData);
+
+        float v1 = variance(temp);
+        float v2 = variance(fakeData);
+
+        int sampleSize = 10;
+
+        float s1 = stdDev(realData);
+        float s2 = stdDev(fakeData);
+
+        return ((float)Math.abs(m1 - m2))/(float)(Math.sqrt((1/sampleSize)/(s1*s1 + s2*s2)));
+
     }
 
     /**
@@ -90,44 +197,6 @@ public class Statistics {
                 maxValue = this.data.get(i).getPercentage();
             }
         }
-//
-//        Map<Float,Integer> vals = new HashMap<Float, Integer>();
-//        ArrayList<Float> modes = new ArrayList<Float>();
-//        int highCount = 0;
-//
-//        for(int i=0; i<this.data.size(); i++)
-//        {
-//            float percent = this.data.get(i).getPercentage();
-//            if(vals.containsKey(percent))
-//            {
-//                vals.put(percent, vals.get(percent)+1);
-//            }
-//            else
-//            {
-//                vals.put(percent, 0);
-//            }
-//        }
-//
-//        for(float key : vals.keySet()) {
-//            if (vals.get(key) > highCount) {
-//                highCount = vals.get(key);
-//            }
-//        }
-//
-//        for(float key : vals.keySet()) {
-//            if(vals.get(key) == highCount){
-//                modes.add(key);
-//            }
-//        }
-//
-//        float[] mode = new float[modes.size()];
-//        int count = 0;
-//        for(float num : modes) {
-//             mode[count] = num;
-//             count++;
-//        }
-//
-//         return mode;
 
          return maxValue;
     }
