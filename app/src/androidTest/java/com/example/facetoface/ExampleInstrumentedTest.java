@@ -63,7 +63,7 @@ public class ExampleInstrumentedTest {
 
         Log.d(" -- DEBUG -- ", "PATIENT: " + Integer.toString(dataList.size()));
 
-    }
+}
 
     @Test
     public void testUtility() {

@@ -2,22 +2,33 @@ package com.example.facetoface;
 
 import com.example.facetoface.data.Data;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Collection;
+import java.util.Map;
 
 public class Statistics {
 
-    private Data dataObject;
     private ArrayList<Data> data;
+    private ArrayList<Data> fullData;
     //start, end, last, patient, total
     public Statistics() {
         data = new ArrayList<>();
     }
 
-    public Statistics(List<Data> data) {
-        data = data;
+    public ArrayList<Data> getData(){
+        return this.data;
+    }
+
+
+    public Statistics(ArrayList<Data> data) {
+        fullData = data;
+        //copy data to fullData amd keep fullData untouched
+        fullData = (ArrayList<Data>)data.clone();
+
     }
 
     /**
@@ -76,9 +87,42 @@ public class Statistics {
                 maxValue = this.data.get(i).getPercentage();
             }
         }
+/*
+         Map<int, float> vals = new HashMap<int, float>();
+         ArrayList<float> modes = new ArrayList<float>();
+         int highCount = 0;
+
+         for(int num : data.) {
+         if(vals.containsKey(num))
+         vals.put(num, vals.get(num) + 1);
+         else
+         vals.put(num, 0);
+         }
+
+         if(allValuesEqual(vals)) return new int[0];
+
+         for(int key : vals.keySet()) {
+         if(vals.get(key) > highCount) {
+         highCount = vals.get(key);
+         }
+         }
+
+         for(int key : vals.keySet()) {
+         if(vals.get(key) == highCount)
+         modes.add(key);
+         }
+
+         int[] mode = new int[modes.size()];
+         int count = 0;
+         for(int num : modes) {
+         mode[count] = num;
+         count++;
+         }
+
+
+         return mode;
+*/
         return maxValue;
-
-
     }
 
     public void setFilter(Filter filter) {
