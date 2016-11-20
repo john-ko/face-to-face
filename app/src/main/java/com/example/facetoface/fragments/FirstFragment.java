@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.example.facetoface.R;
 import com.example.facetoface.Utility;
 import com.example.facetoface.data.DataDBHandler;
+import com.github.mikephil.charting.charts.CandleStickChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 
@@ -44,6 +45,9 @@ public class FirstFragment extends Fragment{
 
         LineChart lineChart2 = (LineChart) testView.findViewById(R.id.lineChart_3);
         Utility.setLineChartData(lineChart2, Utility.formatDataList(dbHandler.getAll()));
+
+        CandleStickChart candleStickChart = (CandleStickChart) testView.findViewById(R.id.candleCart);
+        Utility.setCandleChartData(candleStickChart, dbHandler.getAll());
 
         return testView;
     }
