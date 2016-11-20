@@ -14,6 +14,7 @@ public class Statistics {
 
     private ArrayList<Data> data;
     private ArrayList<Data> fullData;
+    private Data current;
 
     //start, end, last, patient, total
     public Statistics() {
@@ -131,19 +132,16 @@ public class Statistics {
          return maxValue;
     }
 
-    public void setFilter(Filter filter) {
-        if (filter == Filter.WEEK) {
-            this.data.clear();
-            for (Data d : this.fullData) {
-                d.getStart();
-            }
+    public void setCurrent(Data d) {
+        this.current = d;
+    }
 
-        } else if (filter == Filter.DAY) {
+    public Data getCurrent() {
+        return this.current;
+    }
 
-        } else {
-            // Filter.ALLTIME is the default
-
-        }
+    public ArrayList<Data> getAll() {
+        return fullData;
     }
 
 

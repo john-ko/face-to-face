@@ -28,7 +28,7 @@ public class AnalyticActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-    Statistics stats;
+    private Statistics stats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +37,16 @@ public class AnalyticActivity extends AppCompatActivity {
 
         DataDBHandler dbHandler = new DataDBHandler(this, null, null, 1);
         stats = new Statistics(dbHandler.getAll());
-//
-//        PieChart pieChart1 = (PieChart) findViewById(R.id.pieChart_1);
-//        Utility.setPieChartData(pieChart1, dbHandler.getLatestEntry());
-//
-//        LineChart lineChart2 = (LineChart) findViewById(R.id.lineChart_3);
-//        Utility.setLineChartData(lineChart2, Utility.formatDataList(dbHandler.getAll()));
-
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        stats.setCurrent(dbHandler.getLatestEntry());
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+
+
 
         setupTabIcons();
     }
