@@ -120,7 +120,7 @@ public class Statistics {
         ArrayList<Data> fakeData = new ArrayList<>();
 
         //get the last ten data from realdata;
-        for(int i=temp.size()-1; i>temp.size()-11; i--)
+        for(int i=temp.size()-1; i>temp.size()-11 || i < 0; i--)
         {
             realData.add(temp.get(i));
         }
