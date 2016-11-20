@@ -42,17 +42,17 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_width="match_parent" android:id="@+id/lineChart_3"
-        android:layout_height="210dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"></com.github.mikephil.charting.charts.LineChart>
+    <!--<com.github.mikephil.charting.charts.LineChart-->
+        <!--android:layout_width="match_parent" android:id="@+id/lineChart_3"-->
+        <!--android:layout_height="210dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentStart="true"></com.github.mikephil.charting.charts.LineChart>-->
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:layout_width="match_parent" android:id="@+id/pieChart_1"
-        android:layout_height="210dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"></com.github.mikephil.charting.charts.PieChart>
+    <!--<com.github.mikephil.charting.charts.PieChart-->
+        <!--android:layout_width="match_parent" android:id="@+id/pieChart_1"-->
+        <!--android:layout_height="210dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentStart="true"></com.github.mikephil.charting.charts.PieChart>-->
     </android.support.design.widget.CoordinatorLayout>
 
     <!--<com.github.mikephil.charting.charts.LineChart-->
