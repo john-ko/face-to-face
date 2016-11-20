@@ -44,7 +44,10 @@ public class FirstFragment extends Fragment implements StatsHandler {
 //        DataDBHandler dbHandler = new DataDBHandler(getContext(), null, null, 1);
 
         PieChart pieChart1 = (PieChart) testView.findViewById(R.id.pieChart_1);
-        Utility.setPieChartData(pieChart1, stats.getCurrent());
+        if (stats!= null){
+            Utility.setPieChartData(pieChart1, stats.getCurrent());
+        }
+
 
         LineChart lineChart2 = (LineChart) testView.findViewById(R.id.lineChart_3);
         Utility.setLineChartData(lineChart2, Utility.formatDataList(stats.getAll()));
