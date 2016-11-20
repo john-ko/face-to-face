@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.facetoface.AnalyticActivity;
+import com.example.facetoface.Filter;
 import com.example.facetoface.R;
 import com.example.facetoface.Statistics;
 import com.example.facetoface.Utility;
@@ -30,8 +33,13 @@ public class FirstFragment extends Fragment implements StatsHandler {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View testView = (View) inflater.inflate(R.layout.fragment_first, container, false);
+
+        if (stats == null) {
+            stats = ((AnalyticActivity) getActivity()).getStats();
+        }
 
 //        DataDBHandler dbHandler = new DataDBHandler(getContext(), null, null, 1);
 

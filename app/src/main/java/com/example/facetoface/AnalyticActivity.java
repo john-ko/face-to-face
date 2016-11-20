@@ -45,10 +45,11 @@ public class AnalyticActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-
-
-
         setupTabIcons();
+    }
+
+    public Statistics getStats() {
+        return stats;
     }
 
     private void setupTabIcons() {
