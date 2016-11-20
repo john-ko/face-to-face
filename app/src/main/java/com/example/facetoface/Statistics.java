@@ -14,6 +14,7 @@ public class Statistics {
 
     private ArrayList<Data> data;
     private ArrayList<Data> fullData;
+
     //start, end, last, patient, total
     public Statistics() {
         data = new ArrayList<>();
@@ -132,6 +133,10 @@ public class Statistics {
 
     public void setFilter(Filter filter) {
         if (filter == Filter.WEEK) {
+            this.data.clear();
+            for (Data d : this.fullData) {
+                d.getStart();
+            }
 
         } else if (filter == Filter.DAY) {
 

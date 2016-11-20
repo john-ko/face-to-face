@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Utility class
@@ -118,12 +119,14 @@ public class Utility {
         }
 
         // set up variables
+        TreeMap<String, Float> map = new TreeMap<>(averages);
         ArrayList<Entry> entries = new ArrayList<>();
         DataSet dataset;
         ChartData data;
 
         int index = 0;
-        for (Map.Entry<String, Float> entry : averages.entrySet()) {
+        for (Map.Entry<String, Float> entry : map.entrySet()) {
+            System.out.println(entry.getKey());
             // entries require (float, index position)
             entries.add(new Entry(entry.getValue(), index));
             index++;
@@ -133,7 +136,7 @@ public class Utility {
         dataset = new LineDataSet(entries, "Happiness Level");
 
         // LineData requires ( Array of Strings as labels, dataset)
-        data = new LineData(new ArrayList<String>(averages.keySet()), (ILineDataSet) dataset);
+        data = new LineData(new ArrayList<String>(map.keySet()), (ILineDataSet) dataset);
 
         Chart.animateY(3000);
         Chart.setData(data);
