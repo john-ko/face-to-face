@@ -42,17 +42,20 @@ public class SecondFragment extends Fragment implements StatsHandler {
         Log.e("writing ", "second");
         System.out.println(" p------------- here");
 
+        TextView currentText = (TextView) theView.findViewById(R.id.recent);
+        currentText.setText(String.valueOf(Statistics.percentageFormat(stats.getCurrent().getPercentage())));
+
         TextView meanText = (TextView) theView.findViewById(R.id.mean);
-        meanText.setText(String.valueOf(stats.mean()));
+        meanText.setText(String.valueOf(Statistics.percentageFormat(stats.mean())));
 
         TextView medianText = (TextView) theView.findViewById(R.id.median);
-        medianText.setText(String.valueOf(stats.median()));
+        medianText.setText(String.valueOf(Statistics.percentageFormat(stats.median())));
 
-        TextView modeText = (TextView) theView.findViewById(R.id.mode);
-        modeText.setText(String.valueOf(stats.mode()));
+        TextView stdText = (TextView) theView.findViewById(R.id.stddev);
+        stdText.setText(String.valueOf(Statistics.percentageFormat(stats.stdDev())));
 
         TextView ttestText = (TextView) theView.findViewById(R.id.t_test);
-        ttestText.setText(String.valueOf("value"));
+        ttestText.setText(String.valueOf(stats.ttest()));
 
         return theView;
     }

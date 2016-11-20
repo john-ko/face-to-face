@@ -10,6 +10,23 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
+                android:text="Most Recent Session Percentage"
+                android:padding="7dip" />
+            <TextView
+                android:id="@+id/recent"
+                android:text="0%"
+                android:gravity="right"
+                android:padding="7dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
                 android:text="Mean"
                 android:padding="7dip" />
             <TextView
@@ -26,11 +43,11 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="Median"
+                android:text="Standard Deviation"
                 android:padding="7dip" />
             <TextView
-                android:id="@+id/median"
-                android:text="43.21"
+                android:id="@+id/stddev"
+                android:text="0.8"
                 android:gravity="right"
                 android:padding="7dip" />
         </TableRow>
@@ -42,11 +59,11 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="Mode"
+                android:text="Median"
                 android:padding="7dip" />
             <TextView
-                android:id="@+id/mode"
-                android:text="0.8"
+                android:id="@+id/median"
+                android:text="43.21"
                 android:gravity="right"
                 android:padding="7dip" />
         </TableRow>

@@ -3,6 +3,7 @@ package com.example.facetoface;
 import com.example.facetoface.data.Data;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -52,6 +53,9 @@ public class Statistics {
         this.data = (ArrayList<Data>) fullData.clone();
     }
 
+    public float mean() {
+        return mean(this.fullData);
+    }
     /**
      * mean - return the mean if the percentage in the data list
      * @return float
@@ -65,6 +69,10 @@ public class Statistics {
         }
 
         return (float) percentage / temp.size();
+    }
+
+    public float median() {
+        return median(this.fullData);
     }
 
     /**
@@ -104,6 +112,12 @@ public class Statistics {
      * stdDev - return the standard deviation of the pecentage of the data list
      * @return float
      */
+
+    public float stdDev()
+    {
+        return stdDev(this.fullData);
+    }
+
     public float stdDev(ArrayList<Data> temp)
     {
         return (float)Math.sqrt(variance(temp));
@@ -114,6 +128,10 @@ public class Statistics {
      * ttest - return the t-test by comparing two group of data list
      * @return
      */
+    public float ttest(){
+        return ttest(this.fullData);
+    }
+
     public float ttest(ArrayList<Data> temp)
     {
         ArrayList<Data> realData = new ArrayList<>();
@@ -178,6 +196,15 @@ public class Statistics {
 
     public ArrayList<Data> getAll() {
         return fullData;
+    }
+
+    public static String percentageFormat(float floatValue){
+        // Changes floating point number to a percentage number up to 2 decimal places
+        DecimalFormat df = new DecimalFormat("##.##%");
+        double percent = floatValue;
+        System.out.println("current float----- " + String.valueOf(floatValue));
+        String formattedPercent = df.format(percent);
+        return formattedPercent;
     }
 
 
