@@ -3,10 +3,10 @@
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
     <!--<color name="colorAccent">#FF4081</color>-->
-    <color name="colorPrimary">#b3b3b3</color>
-    <color name="colorPrimaryDark">#b3b3b3</color>
-    <color name="textColorPrimary">#b3b3b3</color>
-    <color name="windowBackground">#b3b3b3</color>
-    <color name="navigationBarColor">#b3b3b3</color>
-    <color name="colorAccent">#999999</color>
+    <color name="colorPrimary">#1086D5</color>
+    <color name="colorPrimaryDark">#1086D5</color>
+    <color name="textColorPrimary">#1086D5</color>
+    <color name="windowBackground">#1086D5</color>
+    <color name="navigationBarColor">#1086D5</color>
+    <color name="colorAccent">#41abf1</color>
 </resources>

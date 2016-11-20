@@ -12,6 +12,8 @@ import com.example.facetoface.AnalyticActivity;
 import com.example.facetoface.R;
 import com.example.facetoface.Statistics;
 
+import java.text.SimpleDateFormat;
+
 public class SecondFragment extends Fragment implements StatsHandler {
     Statistics stats;
 
@@ -39,8 +41,17 @@ public class SecondFragment extends Fragment implements StatsHandler {
         /*if (stats != null){
             return theView;
         }*/
-        Log.e("writing ", "second");
+        Log.d("writing ", "second");
         System.out.println(" p------------- here");
+
+        TextView startText = (TextView) theView.findViewById(R.id.starttime);
+        startText.setText(String.valueOf(new SimpleDateFormat("MM/dd/yy hh:mm:ss").format(stats.getCurrent().getStart())));
+
+        TextView endText = (TextView) theView.findViewById(R.id.endtime);
+        endText.setText(String.valueOf(new SimpleDateFormat("MM/dd/yy hh:mm:ss").format(stats.getCurrent().getEnd())));
+
+        TextView patientText = (TextView) theView.findViewById(R.id.patienttime);
+        patientText.setText(String.valueOf(new SimpleDateFormat("MM/dd/yy hh:mm:ss").format(stats.getCurrent().getPatient())));
 
         TextView currentText = (TextView) theView.findViewById(R.id.recent);
         currentText.setText(String.valueOf(Statistics.percentageFormat(stats.getCurrent().getPercentage())));

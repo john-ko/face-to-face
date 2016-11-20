@@ -10,10 +10,22 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="Most Recent Session Percentage"
+                android:text="Most Recent Patient Session Statistics"
+                android:padding="7dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="6dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Start Time"
                 android:padding="7dip" />
             <TextView
-                android:id="@+id/recent"
+                android:id="@+id/starttime"
+                android:layout_width="match_parent"
                 android:text="0%"
                 android:gravity="right"
                 android:padding="7dip" />
@@ -21,6 +33,57 @@
 
         <View
             android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="End Time"
+                android:padding="7dip" />
+            <TextView
+                android:id="@+id/endtime"
+                android:layout_width="match_parent"
+                android:text="0%"
+                android:gravity="right"
+                android:padding="7dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Patient Interaction Time"
+                android:padding="7dip" />
+            <TextView
+                android:id="@+id/patienttime"
+                android:layout_width="match_parent"
+                android:text="0%"
+                android:gravity="right"
+                android:padding="7dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Patient InteractionPercentage"
+                android:padding="7dip" />
+            <TextView
+                android:id="@+id/recent"
+                android:layout_width="match_parent"
+                android:text="0%"
+                android:gravity="right"
+                android:padding="7dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="5dip"
             android:background="#FF909090" />
 
 
@@ -31,6 +94,7 @@
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/mean"
+                android:layout_width="match_parent"
                 android:text="12.34"
                 android:gravity="right"
                 android:padding="7dip" />
@@ -47,6 +111,7 @@
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/stddev"
+                android:layout_width="match_parent"
                 android:text="0.8"
                 android:gravity="right"
                 android:padding="7dip" />
@@ -63,6 +128,7 @@
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/median"
+                android:layout_width="match_parent"
                 android:text="43.21"
                 android:gravity="right"
                 android:padding="7dip" />
@@ -79,6 +145,7 @@
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/t_test"
+                android:layout_width="match_parent"
                 android:text="--"
                 android:gravity="right"
                 android:padding="7dip" />

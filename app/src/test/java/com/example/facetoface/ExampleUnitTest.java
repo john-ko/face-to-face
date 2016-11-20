@@ -32,7 +32,7 @@ public class ExampleUnitTest {
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(timestamp);
         System.out.println(cal.get(Calendar.MONTH));
-        System.out.println(new SimpleDateFormat("D").format(cal.getTime()));
+        System.out.println(new SimpleDateFormat("M/d/D").format(cal.getTime()));
     }
 
     @Test
