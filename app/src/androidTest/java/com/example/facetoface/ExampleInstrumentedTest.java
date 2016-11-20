@@ -81,5 +81,14 @@ public class ExampleInstrumentedTest {
 
     }
 
+    @Test
+    public void testBoxPlotData() {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        DataDBHandler dbHandler = new DataDBHandler(appContext, null, null, 1);
+        ArrayList<Data> dataList = dbHandler.getAll();
+        Utility.moveThisToStats(dataList);
+        Log.d(" -- low -- ", Float.toString(34.2f));
+    }
+
     //creat data randomize it
 }

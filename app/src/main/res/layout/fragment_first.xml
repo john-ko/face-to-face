@@ -27,12 +27,12 @@
             android:layout_below="@+id/pieChart_1"
             android:layout_alignParentStart="true"></com.github.mikephil.charting.charts.LineChart>
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:layout_width="match_parent" android:id="@+id/lineChart_4"
+        <com.github.mikephil.charting.charts.CandleStickChart
+            android:layout_width="match_parent" android:id="@+id/candleCart"
             android:layout_height="210dp"
             android:layout_marginTop="200dp"
             android:layout_alignTop="@+id/lineChart_3"
-            android:layout_alignParentStart="true"></com.github.mikephil.charting.charts.LineChart>
+            android:layout_alignParentStart="true"></com.github.mikephil.charting.charts.CandleStickChart>
 
     </RelativeLayout>
 </ScrollView>

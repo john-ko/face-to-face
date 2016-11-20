@@ -151,10 +151,10 @@ public class Data implements Comparable<Data>{
             return 0;
         }
         else if (this.getPercentage() < other.getPercentage()) {
-            return 1;
+            return -1;
         }
 
-        return -1;
+        return 1;
     }
 
 }
