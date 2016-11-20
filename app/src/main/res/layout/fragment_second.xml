@@ -1,15 +1,89 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.facetoface.fragments.FirstFragment">
+    android:paddingBottom="?android:attr/actionBarSize">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/one"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Mean"
+                android:padding="7dip" />
+            <TextView
+                android:id="@+id/mean"
+                android:text="12.34"
+                android:gravity="right"
+                android:padding="7dip" />
+        </TableRow>
 
-</RelativeLayout>
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Median"
+                android:padding="7dip" />
+            <TextView
+                android:id="@+id/median"
+                android:text="43.21"
+                android:gravity="right"
+                android:padding="7dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="Mode"
+                android:padding="7dip" />
+            <TextView
+                android:id="@+id/mode"
+                android:text="0.8"
+                android:gravity="right"
+                android:padding="7dip" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+            <TextView
+                android:layout_column="1"
+                android:text="T-test Statistic"
+                android:padding="7dip" />
+            <TextView
+                android:id="@+id/t_test"
+                android:text="--"
+                android:gravity="right"
+                android:padding="7dip" />
+        </TableRow>
+
+    </TableLayout>
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:tools="http://schemas.android.com/tools"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--tools:context="com.example.facetoface.fragments.FirstFragment">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:typeface="normal"-->
+            <!--android:text="@string/multilineStats"-->
+            <!--android:textSize="40dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_centerInParent="true"/>-->
+
+
+
+    <!--</RelativeLayout>-->
+</ScrollView>
