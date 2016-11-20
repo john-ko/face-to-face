@@ -87,42 +87,46 @@ public class Statistics {
                 maxValue = this.data.get(i).getPercentage();
             }
         }
-/*
-         Map<int, float> vals = new HashMap<int, float>();
-         ArrayList<float> modes = new ArrayList<float>();
-         int highCount = 0;
+//
+//        Map<Float,Integer> vals = new HashMap<Float, Integer>();
+//        ArrayList<Float> modes = new ArrayList<Float>();
+//        int highCount = 0;
+//
+//        for(int i=0; i<this.data.size(); i++)
+//        {
+//            float percent = this.data.get(i).getPercentage();
+//            if(vals.containsKey(percent))
+//            {
+//                vals.put(percent, vals.get(percent)+1);
+//            }
+//            else
+//            {
+//                vals.put(percent, 0);
+//            }
+//        }
+//
+//        for(float key : vals.keySet()) {
+//            if (vals.get(key) > highCount) {
+//                highCount = vals.get(key);
+//            }
+//        }
+//
+//        for(float key : vals.keySet()) {
+//            if(vals.get(key) == highCount){
+//                modes.add(key);
+//            }
+//        }
+//
+//        float[] mode = new float[modes.size()];
+//        int count = 0;
+//        for(float num : modes) {
+//             mode[count] = num;
+//             count++;
+//        }
+//
+//         return mode;
 
-         for(int num : data.) {
-         if(vals.containsKey(num))
-         vals.put(num, vals.get(num) + 1);
-         else
-         vals.put(num, 0);
-         }
-
-         if(allValuesEqual(vals)) return new int[0];
-
-         for(int key : vals.keySet()) {
-         if(vals.get(key) > highCount) {
-         highCount = vals.get(key);
-         }
-         }
-
-         for(int key : vals.keySet()) {
-         if(vals.get(key) == highCount)
-         modes.add(key);
-         }
-
-         int[] mode = new int[modes.size()];
-         int count = 0;
-         for(int num : modes) {
-         mode[count] = num;
-         count++;
-         }
-
-
-         return mode;
-*/
-        return maxValue;
+         return maxValue;
     }
 
     public void setFilter(Filter filter) {

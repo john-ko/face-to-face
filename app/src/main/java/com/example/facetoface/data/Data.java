@@ -145,10 +145,16 @@ public class Data implements Comparable<Data>{
     }
 
     @Override
-    public int compareTo(Data percentage) {
-        int comparePercentage=(int)((Data)percentage).getPercentage();
-            /* For Ascending order*/
-        return (int)this.getPercentage()-comparePercentage;
+    public int compareTo(Data other) {
+
+        if (this.getPercentage() == other.getPercentage()) {
+            return 0;
+        }
+        else if (this.getPercentage() < other.getPercentage()) {
+            return 1;
+        }
+
+        return -1;
     }
 
 }
