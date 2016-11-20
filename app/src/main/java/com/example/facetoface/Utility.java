@@ -145,6 +145,7 @@ public class Utility {
 
         Chart.animateY(3000);
         Chart.setData(data);
+
     }
 
     public static void setCandleChartData(Chart chart, ArrayList<Data> dataList) {
@@ -164,11 +165,8 @@ public class Utility {
         CandleData data = new CandleData(xVals, set1);
 
         set1.setAxisDependency(YAxis.AxisDependency.LEFT);
-//        set1.setColor(Color.rgb(80, 80, 80));
         set1.setShadowColor(Color.DKGRAY);
-        set1.setShadowWidth(0.7f);
-        set1.setDecreasingColor(Color.RED);
-        set1.setDecreasingPaintStyle(Paint.Style.FILL);
+        set1.setShadowWidth(1.7f);
         set1.setIncreasingColor(Color.rgb(122, 242, 84));
         set1.setIncreasingPaintStyle(Paint.Style.STROKE);
         set1.setNeutralColor(Color.BLUE);
