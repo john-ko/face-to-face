@@ -25,9 +25,10 @@ public class Statistics {
 
 
     public Statistics(ArrayList<Data> data) {
-        fullData = data;
+//        fullData = data;
         //copy data to fullData amd keep fullData untouched
         fullData = (ArrayList<Data>)data.clone();
+        data = (ArrayList<Data>) fullData.clone();
 
     }
 
