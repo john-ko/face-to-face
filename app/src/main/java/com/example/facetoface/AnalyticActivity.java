@@ -3,6 +3,7 @@ package com.example.facetoface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
 
 import android.os.Bundle;
@@ -73,7 +74,63 @@ public class AnalyticActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+//    static final int NUM_ITEMS = 2;
+//    private final FragmentManager mFragmentManager;
+//    private Fragment mFragmentAtPos0;
+//
+//    public MyAdapter(FragmentManager fm)
+//    {
+//        super(fm);
+//        mFragmentManager = fm;
+//    }
+//
+//    @Override
+//    public Fragment getItem(int position)
+//    {
+//        if (position == 0)
+//        {
+//            if (mFragmentAtPos0 == null)
+//            {
+//                mFragmentAtPos0 = FirstPageFragment.newInstance(new FirstPageFragmentListener()
+//                {
+//                    public void onSwitchToNextFragment()
+//                    {
+//                        mFragmentManager.beginTransaction().remove(mFragmentAtPos0).commit();
+//                        mFragmentAtPos0 = NextFragment.newInstance();
+//                        notifyDataSetChanged();
+//                    }
+//                });
+//            }
+//            return mFragmentAtPos0;
+//        }
+//        else
+//            return SecondPageFragment.newInstance();
+//    }
+//
+//    @Override
+//    public int getCount()
+//    {
+//        return NUM_ITEMS;
+//    }
+//
+//    @Override
+//    public int getItemPosition(Object object)
+//    {
+//        if (object instanceof FirstPageFragment && mFragmentAtPos0 instanceof NextFragment)
+//            return POSITION_NONE;
+//        return POSITION_UNCHANGED;
+//    }
+//}
+//
+//public interface FirstPageFragmentListener
+//{
+//    void onSwitchToNextFragment();
+//}
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
+        static final int NUM_ITEMS = 2;
+        private Fragment mFragmentAtPos0;
+
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -83,6 +140,26 @@ public class AnalyticActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            Log.d("the position", String.valueOf(position));
+//            if (position == 0)
+//            {
+//                if (mFragmentAtPos0 == null)
+//                {
+//                    mFragmentAtPos0 = FirstPageFragment.newInstance(new FirstPageFragmentListener()
+//                    {
+//                        public void onSwitchToNextFragment()
+//                        {
+//                            mFragmentManager.beginTransaction().remove(mFragmentAtPos0).commit();
+//                            mFragmentAtPos0 = NextFragment.newInstance();
+//                            notifyDataSetChanged();
+//                        }
+//                    });
+//                }
+//                return mFragmentAtPos0;
+//            }
+//            else
+//                return SecondPageFragment.newInstance();
+
             return mFragmentList.get(position);
         }
 
