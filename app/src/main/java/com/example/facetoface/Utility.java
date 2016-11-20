@@ -126,7 +126,6 @@ public class Utility {
 
         int index = 0;
         for (Map.Entry<String, Float> entry : map.entrySet()) {
-            System.out.println(entry.getKey());
             // entries require (float, index position)
             entries.add(new Entry(entry.getValue(), index));
             index++;

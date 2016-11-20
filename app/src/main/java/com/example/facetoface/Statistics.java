@@ -4,6 +4,7 @@ import com.example.facetoface.data.Data;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -31,50 +32,17 @@ public class Statistics {
      */
 // function to return a fake data set
     public ArrayList<Data> getFakeData(){
-        Data d1 = new Data(); // 0.5
 
         ArrayList<Data> fakeData = new ArrayList<>();
+        long[] patientValues = new long[] {5000l, 10000l, 15000l, 20000l, 25000l, 30000l, 35000l,
+                40000l, 45000l, 48000l};
 
-        //0.1
-        d1.setEnd(50000);
-        d1.setPatient(5000);
-        fakeData.add(d1);
-        //0.2
-        d1.setEnd(50000);
-        d1.setPatient(10000);
-        fakeData.add(d1);
-
-        d1.setEnd(50000);
-        d1.setPatient(15000);
-        fakeData.add(d1);
-
-        d1.setEnd(50000);
-        d1.setPatient(20000);
-        fakeData.add(d1);
-
-        d1.setEnd(50000);
-        d1.setPatient(25000);
-        fakeData.add(d1);
-
-        d1.setEnd(50000);
-        d1.setPatient(30000);
-        fakeData.add(d1);
-
-        d1.setEnd(50000);
-        d1.setPatient(35000);
-        fakeData.add(d1);
-
-        d1.setEnd(50000);
-        d1.setPatient(40000);
-        fakeData.add(d1);
-
-        d1.setEnd(50000);
-        d1.setPatient(45000);
-        fakeData.add(d1);
-
-        d1.setEnd(5000);
-        d1.setPatient(48000);
-        fakeData.add(d1);
+        for (int i=0; i<10; i++) {
+            Data d = new Data();
+            d.setEnd(50000l);
+            d.setPatient(patientValues[i]);
+            fakeData.add(d);
+        }
 
         return fakeData;
     }
@@ -170,8 +138,7 @@ public class Statistics {
         float s1 = stdDev(realData);
         float s2 = stdDev(fakeData);
 
-        return ((float)Math.abs(m1 - m2))/(float)(Math.sqrt((1/sampleSize)/(s1*s1 + s2*s2)));
-
+        return ((float)Math.abs(m1 - m2))/(float)(Math.sqrt((1f/sampleSize)/(s1*s1 + s2*s2)));
     }
 
     /**

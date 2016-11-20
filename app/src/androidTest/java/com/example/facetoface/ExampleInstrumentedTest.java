@@ -92,5 +92,15 @@ public class ExampleInstrumentedTest {
         Log.d(" -- DEBUG -- ", key);
     }
 
+    @Test
+    public void testTTest() {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        DataDBHandler dbHandler = new DataDBHandler(appContext, null, null, 1);
+        ArrayList<Data> dataList = dbHandler.getAll();
+        Statistics s = new Statistics(dataList);
+        float value = s.ttest(dataList);
+
+        System.out.println("done");
+    }
     //creat data randomize it
 }
