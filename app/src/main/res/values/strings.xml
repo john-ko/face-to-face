@@ -10,6 +10,7 @@
     <string name="one">One! :)</string>
     <string name="two">Statistics</string>
     <string name="multilineStats">Mean 1\n\nStd.Dev :D\n\n% Time Spent With Patient\n\nT-test\n\nMore text.</string>
+    <string name="secondsLiteral">&#160;seconds</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

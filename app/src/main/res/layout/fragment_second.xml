@@ -2,6 +2,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="?android:attr/actionBarSize">
+    <RelativeLayout
+        android:id="@+id/top_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,8 +17,9 @@
         <TableRow>
             <TextView
                 android:layout_column="1"
-                android:text="Most Recent Patient Session Statistics"
-                android:padding="7dip" />
+                android:text="Recent Session"
+                android:padding="7dip"
+                android:gravity="left"/>
         </TableRow>
 
         <View
@@ -20,15 +28,16 @@
 
         <TableRow>
             <TextView
-                android:layout_column="1"
                 android:text="Start Time"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/starttime"
                 android:layout_width="match_parent"
                 android:text="0%"
-                android:gravity="right"
-                android:padding="7dip" />
+                android:padding="7dip"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="left" />
         </TableRow>
 
         <View
@@ -37,15 +46,16 @@
 
         <TableRow>
             <TextView
-                android:layout_column="1"
                 android:text="End Time"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/endtime"
                 android:layout_width="match_parent"
                 android:text="0%"
-                android:gravity="right"
-                android:padding="7dip" />
+                android:padding="7dip"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="left" />
         </TableRow>
 
         <View
@@ -54,15 +64,16 @@
 
         <TableRow>
             <TextView
-                android:layout_column="1"
-                android:text="Patient Interaction Time"
+                android:text="Interaction Time (min.sec.ms)"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/patienttime"
                 android:layout_width="match_parent"
                 android:text="0%"
-                android:gravity="right"
-                android:padding="7dip" />
+                android:padding="7dip"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="left" />
         </TableRow>
 
         <View
@@ -71,15 +82,16 @@
 
         <TableRow>
             <TextView
-                android:layout_column="1"
                 android:text="Patient InteractionPercentage"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/recent"
                 android:layout_width="match_parent"
                 android:text="0%"
-                android:gravity="right"
-                android:padding="7dip" />
+                android:padding="7dip"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"/>
         </TableRow>
 
         <View
@@ -89,15 +101,16 @@
 
         <TableRow>
             <TextView
-                android:layout_column="1"
                 android:text="Mean"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/mean"
                 android:layout_width="match_parent"
                 android:text="12.34"
-                android:gravity="right"
-                android:padding="7dip" />
+                android:padding="7dip"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="left" />
         </TableRow>
 
         <View
@@ -106,15 +119,16 @@
 
         <TableRow>
             <TextView
-                android:layout_column="1"
                 android:text="Standard Deviation"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/stddev"
                 android:layout_width="match_parent"
                 android:text="0.8"
-                android:gravity="right"
-                android:padding="7dip" />
+                android:padding="7dip"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="left" />
         </TableRow>
 
         <View
@@ -123,15 +137,16 @@
 
         <TableRow>
             <TextView
-                android:layout_column="1"
                 android:text="Median"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/median"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:text="43.21"
-                android:gravity="right"
-                android:padding="7dip" />
+                android:padding="7dip"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="left" />
         </TableRow>
 
         <View
@@ -140,18 +155,20 @@
 
         <TableRow>
             <TextView
-                android:layout_column="1"
                 android:text="T-test Statistic"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/t_test"
                 android:layout_width="match_parent"
                 android:text="--"
-                android:gravity="right"
-                android:padding="7dip" />
+                android:padding="7dip"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="left" />
         </TableRow>
 
     </TableLayout>
+    </RelativeLayout>
     <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
         <!--xmlns:tools="http://schemas.android.com/tools"-->
         <!--android:layout_width="match_parent"-->

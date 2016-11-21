@@ -51,7 +51,7 @@ public class SecondFragment extends Fragment implements StatsHandler {
         endText.setText(String.valueOf(new SimpleDateFormat("MM/dd/yy hh:mm:ss").format(stats.getCurrent().getEnd())));
 
         TextView patientText = (TextView) theView.findViewById(R.id.patienttime);
-        patientText.setText(String.valueOf(new SimpleDateFormat("MM/dd/yy hh:mm:ss").format(stats.getCurrent().getPatient())));
+        patientText.setText(String.valueOf(new SimpleDateFormat("mmm.ss.SS").format(stats.getCurrent().getPatient())));
 
         TextView currentText = (TextView) theView.findViewById(R.id.recent);
         currentText.setText(String.valueOf(Statistics.percentageFormat(stats.getCurrent().getPercentage())));
