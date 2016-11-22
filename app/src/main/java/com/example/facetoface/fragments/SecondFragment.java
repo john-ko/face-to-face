@@ -45,10 +45,10 @@ public class SecondFragment extends Fragment implements StatsHandler {
         System.out.println(" p------------- here");
 
         TextView startText = (TextView) theView.findViewById(R.id.starttime);
-        startText.setText(String.valueOf(new SimpleDateFormat("MM/dd/yy hh:mm:ss").format(stats.getCurrent().getStart())));
+        startText.setText(String.valueOf(new SimpleDateFormat("HH/dd/yy HH:mm:ss").format(stats.getCurrent().getStart())));
 
         TextView endText = (TextView) theView.findViewById(R.id.endtime);
-        endText.setText(String.valueOf(new SimpleDateFormat("MM/dd/yy hh:mm:ss").format(stats.getCurrent().getEnd())));
+        endText.setText(String.valueOf(new SimpleDateFormat("MM/dd/yy HH:mm:ss").format(stats.getCurrent().getEnd())));
 
         TextView patientText = (TextView) theView.findViewById(R.id.patienttime);
         patientText.setText(String.valueOf(new SimpleDateFormat("mmm.ss.SS").format(stats.getCurrent().getPatient())));

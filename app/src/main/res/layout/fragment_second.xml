@@ -82,7 +82,7 @@
 
         <TableRow>
             <TextView
-                android:text="Patient InteractionPercentage"
+                android:text="Patient Interaction Percentage"
                 android:padding="7dip" />
             <TextView
                 android:id="@+id/recent"

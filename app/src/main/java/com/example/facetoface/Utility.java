@@ -138,7 +138,7 @@ public class Utility {
         }
 
         // label for line chart
-        dataset = new LineDataSet(entries, "Happiness Level");
+        dataset = new LineDataSet(entries, "Average patient interaction ratio");
 
         // LineData requires ( Array of Strings as labels, dataset)
         data = new LineData(new ArrayList<String>(averages.keySet()), (ILineDataSet) dataset);

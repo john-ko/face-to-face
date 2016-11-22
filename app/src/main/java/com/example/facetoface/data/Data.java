@@ -20,8 +20,8 @@ public class Data implements Comparable<Data>{
     // maybe this should be with Utility class
     public static ArrayList<String> getLabels() {
         ArrayList<String> labels = new ArrayList<>();
-        labels.add("time without");
-        labels.add("time with patient");
+        labels.add("time without in seconds");
+        labels.add("time with patient in seconds");
         return labels;
     }
 
